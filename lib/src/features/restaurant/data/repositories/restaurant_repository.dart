@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:restr/src/constants/resources.dart';
-import 'package:restr/src/features/restaurant/domain/restaurant.dart';
+import 'package:restr/src/features/restaurant/domain/restaurants.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class RestaurantRepository {
