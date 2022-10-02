@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:restr/src/features/restaurant/presentation/detail_restaurant/detail_restaurant_page.dart';
 import 'package:restr/src/features/restaurant/presentation/list_restaurant/home_page.dart';
 import 'package:restr/src/features/restaurant/presentation/search_restaurant/search_restaurant_page.dart';
-import 'package:restr/src/features/views/splash/splash_page.dart';
+import 'package:restr/src/features/common/splash/splash_page.dart';
 import 'package:restr/src/routing/error_page.dart';
 
 enum Routes {
