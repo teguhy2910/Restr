@@ -5,6 +5,7 @@ class AppThemes {
   static const Color scaffoldColor = Color(0xFFFFFFFF);
   static const Color orange = Color(0xFFFAB400);
   static const Color green = Color(0xFF11AC6A);
+  static const Color greenGrey = Color(0xFFD6FFEE);
   static const Color white = Colors.white;
   static const Color lightGrey = Color(0xFFF6F7FB);
   static const Color grey = Color(0xFFA4A4A4);
