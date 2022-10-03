@@ -20,10 +20,16 @@ class SearchRestaurantList extends ConsumerWidget {
     final AsyncValue<Restaurants?> restaurants =
         ref.watch(searchRestaurantControllerProvider);
     final String result = ref.watch(resultSearchTextControllerProvider);
+    if (result.isEmpty) {
+      return const LottieWidget(
+        assets: Resources.lottieSearch,
+        description: 'Search restaurant here...',
+      );
+    }
     return AsyncValueWidget<Restaurants?>(
       value: restaurants,
       data: (value) {
-        if (value == null || result.isEmpty) {
+        if (value == null) {
           return const LottieWidget(
             assets: Resources.lottieSearch,
             description: 'Search restaurant here...',

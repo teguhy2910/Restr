@@ -13,28 +13,40 @@ class PlaceholderSearchField extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => context.pushNamed(Routes.searchRestaurant.name),
-      child: Container(
-        width: double.infinity,
-        padding: const EdgeInsets.symmetric(
-            horizontal: Sizes.p16, vertical: Sizes.p12),
-        decoration: BoxDecoration(
-          color: AppThemes.lightGrey,
-          borderRadius: BorderRadius.circular(20),
+      child: Hero(
+        tag: Keys.heroSearchField,
+        flightShuttleBuilder: (BuildContext flightContext,
+                Animation<double> animation,
+                HeroFlightDirection flightDirection,
+                BuildContext fromHeroContext,
+                BuildContext toHeroContext) =>
+            Material(
+          type: MaterialType.transparency,
+          child: toHeroContext.widget,
         ),
-        child: Row(
-          children: [
-            const Icon(
-              Icons.search_rounded,
-              color: AppThemes.grey,
-            ),
-            Gap.w12,
-            Expanded(
-              child: Text(
-                'What do you want to eat today?',
-                style: AppThemes.text2.grey,
+        child: Container(
+          width: double.infinity,
+          padding: const EdgeInsets.symmetric(
+              horizontal: Sizes.p16, vertical: Sizes.p12),
+          decoration: BoxDecoration(
+            color: AppThemes.lightGrey,
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Row(
+            children: [
+              const Icon(
+                Icons.search_rounded,
+                color: AppThemes.grey,
               ),
-            ),
-          ],
+              Gap.w12,
+              Expanded(
+                child: Text(
+                  'What do you want to eat today?',
+                  style: AppThemes.text2.grey,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

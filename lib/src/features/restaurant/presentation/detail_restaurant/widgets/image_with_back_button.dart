@@ -18,15 +18,27 @@ class ImageWithBackButton extends StatelessWidget {
       width: double.infinity,
       child: Stack(
         children: [
-          ClipRRect(
-            borderRadius: const BorderRadius.only(
-              bottomRight: Radius.circular(Sizes.p32),
+          Hero(
+            tag: 'image:${restaurant.id}',
+            flightShuttleBuilder: (BuildContext flightContext,
+                    Animation<double> animation,
+                    HeroFlightDirection flightDirection,
+                    BuildContext fromHeroContext,
+                    BuildContext toHeroContext) =>
+                Material(
+              type: MaterialType.transparency,
+              child: toHeroContext.widget,
             ),
-            child: AspectRatio(
-              aspectRatio: 4 / 3,
-              child: CachedNetworkImage(
-                imageUrl: restaurant.pictureId,
-                fit: BoxFit.cover,
+            child: ClipRRect(
+              borderRadius: const BorderRadius.only(
+                bottomRight: Radius.circular(Sizes.p32),
+              ),
+              child: AspectRatio(
+                aspectRatio: 4 / 3,
+                child: CachedNetworkImage(
+                  imageUrl: restaurant.pictureId,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),

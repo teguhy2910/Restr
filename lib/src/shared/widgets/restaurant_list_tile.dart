@@ -81,13 +81,25 @@ class ImageWithRating extends StatelessWidget {
         alignment: Alignment.bottomCenter,
         clipBehavior: Clip.none,
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(Sizes.p12),
-            child: AspectRatio(
-              aspectRatio: 4 / 3,
-              child: CachedNetworkImage(
-                imageUrl: restaurant.pictureId,
-                fit: BoxFit.cover,
+          Hero(
+            tag: 'image:${restaurant.id}',
+            flightShuttleBuilder: (BuildContext flightContext,
+                    Animation<double> animation,
+                    HeroFlightDirection flightDirection,
+                    BuildContext fromHeroContext,
+                    BuildContext toHeroContext) =>
+                Material(
+              type: MaterialType.transparency,
+              child: toHeroContext.widget,
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(Sizes.p12),
+              child: AspectRatio(
+                aspectRatio: 4 / 3,
+                child: CachedNetworkImage(
+                  imageUrl: restaurant.pictureId,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),

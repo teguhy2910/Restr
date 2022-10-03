@@ -12,35 +12,47 @@ class SearchField extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return TextField(
-      autofocus: true,
-      decoration: InputDecoration(
-        fillColor: AppThemes.lightGrey,
-        filled: true,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(Sizes.p20),
-          borderSide: const BorderSide(
-            width: 0,
-            style: BorderStyle.none,
-          ),
-        ),
-        prefixIcon: const Icon(
-          Icons.search_rounded,
-          color: AppThemes.grey,
-        ),
-        contentPadding: const EdgeInsets.symmetric(
-            horizontal: Sizes.p16, vertical: Sizes.p12),
-        hintText: 'What do you want to eat today?',
-        hintStyle: AppThemes.text2.grey,
+    return Hero(
+      tag: Keys.heroSearchField,
+      flightShuttleBuilder: (BuildContext flightContext,
+              Animation<double> animation,
+              HeroFlightDirection flightDirection,
+              BuildContext fromHeroContext,
+              BuildContext toHeroContext) =>
+          Material(
+        type: MaterialType.transparency,
+        child: toHeroContext.widget,
       ),
-      onChanged: (value) {
-        ref
-            .read(searchRestaurantControllerProvider.notifier)
-            .searchRestaurant(name: value);
-        ref
-            .read(resultSearchTextControllerProvider.notifier)
-            .search(name: value);
-      },
+      child: TextField(
+        autofocus: true,
+        decoration: InputDecoration(
+          fillColor: AppThemes.lightGrey,
+          filled: true,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(Sizes.p20),
+            borderSide: const BorderSide(
+              width: 0,
+              style: BorderStyle.none,
+            ),
+          ),
+          prefixIcon: const Icon(
+            Icons.search_rounded,
+            color: AppThemes.grey,
+          ),
+          contentPadding: const EdgeInsets.symmetric(
+              horizontal: Sizes.p16, vertical: Sizes.p12),
+          hintText: 'What do you want to eat today?',
+          hintStyle: AppThemes.text2.grey,
+        ),
+        onChanged: (value) {
+          ref
+              .read(searchRestaurantControllerProvider.notifier)
+              .searchRestaurant(name: value);
+          ref
+              .read(resultSearchTextControllerProvider.notifier)
+              .search(name: value);
+        },
+      ),
     );
   }
 }
