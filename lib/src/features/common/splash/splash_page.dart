@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:restr/src/constants/app_sizes.dart';
-import 'package:restr/src/constants/app_themes.dart';
-import 'package:restr/src/constants/resources.dart';
+import 'package:restr/src/constants/constants.dart';
 import 'package:restr/src/routing/app_routes.dart';
 
 class SplashPage extends StatefulWidget {

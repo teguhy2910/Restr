@@ -62,4 +62,14 @@ class AppThemes {
       ),
     ];
   }
+
+  static List<BoxShadow> getSmallShadow({Color color = grey}) {
+    return [
+      BoxShadow(
+        color: AppThemes.grey.withOpacity(0.2),
+        offset: const Offset(0, 2),
+        blurRadius: 4,
+      ),
+    ];
+  }
 }
