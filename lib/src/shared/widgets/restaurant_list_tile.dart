@@ -1,11 +1,18 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+
 import 'package:restr/src/constants/constants.dart';
+import 'package:restr/src/features/restaurant/domain/restaurants.dart';
 import 'package:restr/src/shared/extensions/extensions.dart';
 
 class RestaurantListTile extends StatelessWidget {
   const RestaurantListTile({
     Key? key,
+    required this.restaurant,
   }) : super(key: key);
+
+  final Restaurant restaurant;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +24,7 @@ class RestaurantListTile extends StatelessWidget {
       ),
       child: Row(
         children: [
-          const ImageWithRating(),
+          ImageWithRating(restaurant: restaurant),
           Gap.w20,
           Expanded(
             child: Column(
@@ -25,7 +32,7 @@ class RestaurantListTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Restaurant 1',
+                  restaurant.name,
                   style: AppThemes.text1.bold,
                 ),
                 Gap.h8,
@@ -39,14 +46,14 @@ class RestaurantListTile extends StatelessWidget {
                     ),
                     Gap.w4,
                     Text(
-                      'Medan',
+                      restaurant.city,
                       style: AppThemes.subText1.grey,
                     ),
                   ],
                 ),
                 Gap.h16,
                 Text(
-                  'Paket Rosemary, Eskrim, dan aneka makanan minuman lainnya!',
+                  'Paket ${restaurant.menus.foods.first.name}, ${restaurant.menus.drinks.first.name}, dan aneka makanan minuman lainnya!',
                   style: AppThemes.subText1,
                 ),
               ],
@@ -61,7 +68,10 @@ class RestaurantListTile extends StatelessWidget {
 class ImageWithRating extends StatelessWidget {
   const ImageWithRating({
     Key? key,
+    required this.restaurant,
   }) : super(key: key);
+
+  final Restaurant restaurant;
 
   @override
   Widget build(BuildContext context) {
@@ -75,8 +85,8 @@ class ImageWithRating extends StatelessWidget {
             borderRadius: BorderRadius.circular(Sizes.p12),
             child: AspectRatio(
               aspectRatio: 4 / 3,
-              child: Image.asset(
-                Resources.restrIcon,
+              child: CachedNetworkImage(
+                imageUrl: restaurant.pictureId,
                 fit: BoxFit.cover,
               ),
             ),
@@ -84,7 +94,10 @@ class ImageWithRating extends StatelessWidget {
           Positioned(
             bottom: -Sizes.p12,
             child: Container(
-              padding: const EdgeInsets.all(Sizes.p8),
+              padding: const EdgeInsets.symmetric(
+                vertical: Sizes.p4,
+                horizontal: Sizes.p8,
+              ),
               decoration: BoxDecoration(
                 color: AppThemes.white,
                 borderRadius: BorderRadius.circular(Sizes.p20),
@@ -100,7 +113,7 @@ class ImageWithRating extends StatelessWidget {
                   ),
                   Gap.w8,
                   Text(
-                    '4.7',
+                    restaurant.rating.toStringAsFixed(1),
                     style: AppThemes.subText1.bold,
                   ),
                 ],

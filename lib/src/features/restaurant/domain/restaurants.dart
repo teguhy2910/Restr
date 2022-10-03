@@ -16,7 +16,7 @@ class Restaurants {
   factory Restaurants.fromMap(Map<String, dynamic> map) {
     return Restaurants(
       restaurants: List<Restaurant>.from(
-        (map['restaurants'] as List<int>).map<Restaurant>(
+        (map['restaurants'] as List<dynamic>).map<Restaurant>(
           (x) => Restaurant.fromMap(x as Map<String, dynamic>),
         ),
       ),
@@ -70,7 +70,7 @@ class Restaurant {
       description: map['description'] as String,
       pictureId: map['pictureId'] as String,
       city: map['city'] as String,
-      rating: map['rating'] as double,
+      rating: (map['rating'] as num).toDouble(),
       menus: Menus.fromMap(map['menus'] as Map<String, dynamic>),
     );
   }
@@ -105,12 +105,12 @@ class Menus {
   factory Menus.fromMap(Map<String, dynamic> map) {
     return Menus(
       foods: List<Food>.from(
-        (map['foods'] as List<int>).map<Food>(
+        (map['foods'] as List<dynamic>).map<Food>(
           (x) => Food.fromMap(x as Map<String, dynamic>),
         ),
       ),
       drinks: List<Drink>.from(
-        (map['drinks'] as List<int>).map<Drink>(
+        (map['drinks'] as List<dynamic>).map<Drink>(
           (x) => Drink.fromMap(x as Map<String, dynamic>),
         ),
       ),

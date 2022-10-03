@@ -6,8 +6,9 @@ extension XRestaurants on Restaurants {
   }
 
   Restaurants filterByName({required String name}) {
-    final result =
-        restaurants.where((element) => element.name == name).toList();
+    final result = restaurants.where((element) {
+      return element.name.toLowerCase().contains(name.toLowerCase());
+    }).toList();
     return Restaurants(restaurants: result);
   }
 }
