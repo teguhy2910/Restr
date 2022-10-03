@@ -4,6 +4,7 @@ import 'package:restr/src/constants/constants.dart';
 import 'package:restr/src/features/restaurant/presentation/search_restaurant/controllers/result_search_text.dart';
 import 'package:restr/src/features/restaurant/presentation/search_restaurant/controllers/search_restaurant_controller.dart';
 import 'package:restr/src/shared/extensions/extensions.dart';
+import 'package:restr/src/shared/helper/hero_builder.dart';
 
 class SearchField extends ConsumerWidget {
   const SearchField({
@@ -14,15 +15,7 @@ class SearchField extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Hero(
       tag: Keys.heroSearchField,
-      flightShuttleBuilder: (BuildContext flightContext,
-              Animation<double> animation,
-              HeroFlightDirection flightDirection,
-              BuildContext fromHeroContext,
-              BuildContext toHeroContext) =>
-          Material(
-        type: MaterialType.transparency,
-        child: toHeroContext.widget,
-      ),
+      flightShuttleBuilder: heroFlightShuttleBuilder,
       child: TextField(
         autofocus: true,
         decoration: InputDecoration(

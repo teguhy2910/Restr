@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:restr/src/constants/constants.dart';
 import 'package:restr/src/routing/app_routes.dart';
 import 'package:restr/src/shared/extensions/extensions.dart';
+import 'package:restr/src/shared/helper/hero_builder.dart';
 
 class PlaceholderSearchField extends StatelessWidget {
   const PlaceholderSearchField({
@@ -15,15 +16,7 @@ class PlaceholderSearchField extends StatelessWidget {
       onTap: () => context.pushNamed(Routes.searchRestaurant.name),
       child: Hero(
         tag: Keys.heroSearchField,
-        flightShuttleBuilder: (BuildContext flightContext,
-                Animation<double> animation,
-                HeroFlightDirection flightDirection,
-                BuildContext fromHeroContext,
-                BuildContext toHeroContext) =>
-            Material(
-          type: MaterialType.transparency,
-          child: toHeroContext.widget,
-        ),
+        flightShuttleBuilder: heroFlightShuttleBuilder,
         child: Container(
           width: double.infinity,
           padding: const EdgeInsets.symmetric(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:restr/src/constants/constants.dart';
 import 'package:restr/src/features/restaurant/domain/restaurants.dart';
+import 'package:restr/src/shared/helper/hero_builder.dart';
 
 class ImageWithBackButton extends StatelessWidget {
   const ImageWithBackButton({
@@ -20,15 +21,7 @@ class ImageWithBackButton extends StatelessWidget {
         children: [
           Hero(
             tag: 'image:${restaurant.id}',
-            flightShuttleBuilder: (BuildContext flightContext,
-                    Animation<double> animation,
-                    HeroFlightDirection flightDirection,
-                    BuildContext fromHeroContext,
-                    BuildContext toHeroContext) =>
-                Material(
-              type: MaterialType.transparency,
-              child: toHeroContext.widget,
-            ),
+            flightShuttleBuilder: heroFlightShuttleBuilder,
             child: ClipRRect(
               borderRadius: const BorderRadius.only(
                 bottomRight: Radius.circular(Sizes.p32),

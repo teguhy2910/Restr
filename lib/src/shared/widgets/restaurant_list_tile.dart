@@ -1,10 +1,10 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import 'package:restr/src/constants/constants.dart';
 import 'package:restr/src/features/restaurant/domain/restaurants.dart';
 import 'package:restr/src/shared/extensions/extensions.dart';
+import 'package:restr/src/shared/helper/hero_builder.dart';
 
 class RestaurantListTile extends StatelessWidget {
   const RestaurantListTile({
@@ -83,15 +83,7 @@ class ImageWithRating extends StatelessWidget {
         children: [
           Hero(
             tag: 'image:${restaurant.id}',
-            flightShuttleBuilder: (BuildContext flightContext,
-                    Animation<double> animation,
-                    HeroFlightDirection flightDirection,
-                    BuildContext fromHeroContext,
-                    BuildContext toHeroContext) =>
-                Material(
-              type: MaterialType.transparency,
-              child: toHeroContext.widget,
-            ),
+            flightShuttleBuilder: heroFlightShuttleBuilder,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(Sizes.p12),
               child: AspectRatio(

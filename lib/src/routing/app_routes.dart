@@ -17,7 +17,6 @@ enum Routes {
 }
 
 final goRouter = GoRouter(
-  debugLogDiagnostics: true, //TODO: Delete when release mode
   urlPathStrategy: UrlPathStrategy.path,
   initialLocation: '/',
   errorPageBuilder: (context, state) => _navigate(
