@@ -78,6 +78,7 @@ class DetailRestaurantPage extends StatelessWidget {
                       },
                     ),
                   ),
+                  Gap.h20,
                 ],
               ),
             ),
