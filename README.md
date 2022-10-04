@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <img src="demo/cover.png"/>
+  <img src="demo/cover-restr.png"/>
 </p>
 
 ## Table of Contents
@@ -41,7 +41,7 @@ https://github.com/Adithya-13/Restr.git
 
 ## Demo
 
-|Dashboard|Detail Restaurant|Search|
+|Dashboard|Detail Restaurant|Search Restaurant|
 |--|--|--|
 |![](demo/dashboard.gif)|![](demo/detail.gif)|![](demo/search.gif)|
 
