@@ -1,8 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:restr/src/features/restaurant/application/restaurant_service.dart';
-import 'package:restr/src/features/restaurant/domain/restaurants.dart';
+import 'package:restr/src/features/restaurant/domain/restaurant_detail.dart';
 
-class DetailRestaurantController extends StateNotifier<AsyncValue<Restaurant>> {
+class DetailRestaurantController
+    extends StateNotifier<AsyncValue<RestaurantDetail>> {
   DetailRestaurantController({required this.restaurantService})
       : super(const AsyncLoading());
 
@@ -10,13 +11,15 @@ class DetailRestaurantController extends StateNotifier<AsyncValue<Restaurant>> {
 
   Future<void> getRestaurantById({required String id}) async {
     state = const AsyncLoading();
-    state = await AsyncValue.guard(
-      () => restaurantService.getRestaurantById(id: id),
+    final result = await restaurantService.getRestaurantDetail(id: id);
+    result.when(
+      success: (data) => state = AsyncData(data),
+      failure: (error, stacktrace) => AsyncError(error, stacktrace),
     );
   }
 }
 
 final detailRestaurantControllerProvider = StateNotifierProvider.autoDispose<
-        DetailRestaurantController, AsyncValue<Restaurants>>(
+        DetailRestaurantController, AsyncValue<RestaurantDetail>>(
     (ref) => DetailRestaurantController(
         restaurantService: ref.watch(restaurantServiceProvider)));

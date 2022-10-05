@@ -1,6 +1,9 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:restr/src/constants/constants.dart';
-import 'package:restr/src/features/restaurant/domain/restaurants.dart';
+import 'package:restr/src/features/restaurant/domain/restaurant_detail.dart';
+import 'package:restr/src/features/restaurant/presentation/detail_restaurant/widgets/category_list_tile.dart';
 import 'package:restr/src/shared/extensions/extensions.dart';
 
 class BasicInformationRestaurant extends StatelessWidget {
@@ -9,7 +12,7 @@ class BasicInformationRestaurant extends StatelessWidget {
     required this.restaurant,
   }) : super(key: key);
 
-  final Restaurant restaurant;
+  final RestaurantDetail restaurant;
 
   @override
   Widget build(BuildContext context) {
@@ -36,10 +39,16 @@ class BasicInformationRestaurant extends StatelessWidget {
                   ),
                   Gap.w4,
                   Text(
-                    restaurant.city,
-                    style: AppThemes.text1.grey,
+                    '${restaurant.address}, ${restaurant.city}',
+                    style: AppThemes.text2.grey,
                   ),
                 ],
+              ),
+              Gap.h8,
+              Wrap(
+                children: restaurant.categories
+                    .map((item) => CategoryListTile(name: item.name))
+                    .toList(),
               ),
             ],
           ),

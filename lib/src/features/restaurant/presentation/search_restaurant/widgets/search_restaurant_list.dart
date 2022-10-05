@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:restr/src/common_widgets/common_widgets.dart';
 import 'package:restr/src/constants/constants.dart';
-import 'package:restr/src/features/restaurant/domain/restaurants.dart';
+import 'package:restr/src/features/restaurant/domain/restaurant_search.dart';
 import 'package:restr/src/features/restaurant/presentation/search_restaurant/controllers/result_search_text.dart';
 import 'package:restr/src/features/restaurant/presentation/search_restaurant/controllers/search_restaurant_controller.dart';
 import 'package:restr/src/routing/app_routes.dart';
@@ -17,7 +17,7 @@ class SearchRestaurantList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final AsyncValue<Restaurants?> restaurants =
+    final AsyncValue<RestaurantSearch?> restaurants =
         ref.watch(searchRestaurantControllerProvider);
     final String result = ref.watch(resultSearchTextControllerProvider);
     if (result.isEmpty) {
@@ -26,7 +26,7 @@ class SearchRestaurantList extends ConsumerWidget {
         description: 'Search restaurant here...',
       );
     }
-    return AsyncValueWidget<Restaurants?>(
+    return AsyncValueWidget<RestaurantSearch?>(
       value: restaurants,
       data: (value) {
         if (value == null) {
@@ -55,7 +55,7 @@ class SearchRestaurantList extends ConsumerWidget {
                     Routes.detailRestaurant.name,
                     extra: Extras(
                       extras: {
-                        Keys.restaurant: restaurant,
+                        Keys.restaurantId: restaurant.id,
                       },
                     ),
                   );

@@ -38,9 +38,11 @@ class SearchField extends ConsumerWidget {
           hintStyle: AppThemes.text2.grey,
         ),
         onChanged: (value) {
-          ref
-              .read(searchRestaurantControllerProvider.notifier)
-              .searchRestaurant(name: value);
+          if (value.isNotEmpty) {
+            ref
+                .read(searchRestaurantControllerProvider.notifier)
+                .searchRestaurant(query: value);
+          }
           ref
               .read(resultSearchTextControllerProvider.notifier)
               .search(name: value);

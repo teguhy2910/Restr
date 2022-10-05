@@ -13,4 +13,6 @@ extension XTextStyle on TextStyle {
   TextStyle get extraBlack => copyWith(fontWeight: FontWeight.w900);
 
   TextStyle get grey => copyWith(color: AppThemes.grey);
+  TextStyle get white => copyWith(color: AppThemes.white);
+  TextStyle get red => copyWith(color: Colors.red);
 }

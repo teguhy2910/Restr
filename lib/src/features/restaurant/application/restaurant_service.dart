@@ -1,7 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:restr/src/features/restaurant/application/restaurant_extensions.dart';
+import 'package:restr/src/features/restaurant/application/restaurant_mapper.dart';
 import 'package:restr/src/features/restaurant/data/repositories/restaurant_repository.dart';
-import 'package:restr/src/features/restaurant/domain/restaurants.dart';
+import 'package:restr/src/features/restaurant/domain/restaurant_detail.dart';
+import 'package:restr/src/features/restaurant/domain/restaurant_list.dart';
+import 'package:restr/src/features/restaurant/domain/restaurant_search.dart';
+import 'package:restr/src/services/network/api_result.dart';
 
 class RestaurantService {
   final Ref ref;
@@ -10,22 +13,26 @@ class RestaurantService {
     required this.ref,
   });
 
-  Future<Restaurants> getRestaurants() async {
-    final restaurants =
-        await ref.read(restaurantRepositoryProvider).getRestaurants();
-    return restaurants;
+  Future<ApiResult<RestaurantList>> getRestaurantList() async {
+    final restaurantList =
+        await ref.read(restaurantRepositoryProvider).getRestaurantList();
+    return RestaurantMapper.mapToRestaurantList(restaurantList);
   }
 
-  Future<Restaurant> getRestaurantById({required String id}) async {
-    final restaurants = await getRestaurants();
-    final restaurant = restaurants.filterById(id: id);
-    return restaurant;
+  Future<ApiResult<RestaurantDetail>> getRestaurantDetail(
+      {required String id}) async {
+    final restaurantDetail = await ref
+        .read(restaurantRepositoryProvider)
+        .getRestaurantDetail(id: id);
+    return RestaurantMapper.mapToRestaurantDetail(restaurantDetail);
   }
 
-  Future<Restaurants> searchRestaurants({required String name}) async {
-    final restaurants = await getRestaurants();
-    final filteredRestaurants = restaurants.filterByName(name: name);
-    return filteredRestaurants;
+  Future<ApiResult<RestaurantSearch>> getRestaurantSearch(
+      {required String query}) async {
+    final restaurantSearch = await ref
+        .read(restaurantRepositoryProvider)
+        .getRestaurantSearch(query: query);
+    return RestaurantMapper.mapToRestaurantSearch(restaurantSearch);
   }
 }
 

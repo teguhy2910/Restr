@@ -3,26 +3,26 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:restr/src/common_widgets/common_widgets.dart';
 import 'package:restr/src/constants/constants.dart';
-import 'package:restr/src/features/restaurant/domain/restaurants.dart';
+import 'package:restr/src/features/restaurant/domain/restaurant_list.dart';
 import 'package:restr/src/features/restaurant/presentation/list_restaurant/controllers/restaurant_list_controller.dart';
 import 'package:restr/src/routing/app_routes.dart';
 import 'package:restr/src/routing/extras.dart';
 import 'package:restr/src/shared/widgets/restaurant_list_tile.dart';
 
-class RestaurantList extends ConsumerStatefulWidget {
-  const RestaurantList({
+class RestaurantListWidget extends ConsumerStatefulWidget {
+  const RestaurantListWidget({
     Key? key,
   }) : super(key: key);
 
   @override
-  ConsumerState<RestaurantList> createState() => _RestaurantListState();
+  ConsumerState<RestaurantListWidget> createState() => _RestaurantListState();
 }
 
-class _RestaurantListState extends ConsumerState<RestaurantList> {
+class _RestaurantListState extends ConsumerState<RestaurantListWidget> {
   @override
   void didChangeDependencies() {
     Future.delayed(Duration.zero, () {
-      ref.read(restaurantListControllerProvider.notifier).getRestaurants();
+      ref.read(restaurantListControllerProvider.notifier).getRestaurantList();
     });
 
     super.didChangeDependencies();
@@ -30,10 +30,10 @@ class _RestaurantListState extends ConsumerState<RestaurantList> {
 
   @override
   Widget build(BuildContext context) {
-    final AsyncValue<Restaurants> restaurants =
+    final AsyncValue<RestaurantList> restaurants =
         ref.watch(restaurantListControllerProvider);
 
-    return AsyncValueWidget<Restaurants>(
+    return AsyncValueWidget<RestaurantList>(
       value: restaurants,
       data: (value) => ListView.builder(
         itemCount: value.restaurants.length,
@@ -49,7 +49,7 @@ class _RestaurantListState extends ConsumerState<RestaurantList> {
                   Routes.detailRestaurant.name,
                   extra: Extras(
                     extras: {
-                      Keys.restaurant: restaurant,
+                      Keys.restaurantId: restaurant.id,
                     },
                   ),
                 );

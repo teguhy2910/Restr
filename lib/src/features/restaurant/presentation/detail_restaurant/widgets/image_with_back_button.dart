@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:restr/src/constants/constants.dart';
-import 'package:restr/src/features/restaurant/domain/restaurants.dart';
+import 'package:restr/src/features/restaurant/domain/restaurant_detail.dart';
 import 'package:restr/src/shared/helper/hero_builder.dart';
 
 class ImageWithBackButton extends StatelessWidget {
@@ -11,7 +11,7 @@ class ImageWithBackButton extends StatelessWidget {
     required this.restaurant,
   }) : super(key: key);
 
-  final Restaurant restaurant;
+  final RestaurantDetail restaurant;
 
   @override
   Widget build(BuildContext context) {

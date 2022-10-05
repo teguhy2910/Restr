@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:restr/src/common_widgets/common_widgets.dart';
 import 'package:restr/src/constants/constants.dart';
-import 'package:restr/src/features/restaurant/presentation/list_restaurant/widgets/restaurant_list.dart';
+import 'package:restr/src/features/restaurant/presentation/list_restaurant/widgets/restaurant_list_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
                 style: AppThemes.headline2,
               ),
               Gap.h20,
-              const RestaurantList(),
+              const RestaurantListWidget(),
             ],
           ),
         ),

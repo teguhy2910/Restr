@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:restr/src/constants/constants.dart';
 import 'package:restr/src/routing/app_routes.dart';
 
 void main() {
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
           routerDelegate: goRouter.routerDelegate,
           title: 'Restr',
           theme: ThemeData(
+            scaffoldBackgroundColor: AppThemes.white,
             primarySwatch: Colors.green,
           ),
         ),

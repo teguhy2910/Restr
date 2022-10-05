@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import 'package:restr/src/constants/constants.dart';
-import 'package:restr/src/features/restaurant/domain/restaurants.dart';
+import 'package:restr/src/features/restaurant/domain/restaurant.dart';
 import 'package:restr/src/shared/extensions/extensions.dart';
 import 'package:restr/src/shared/helper/hero_builder.dart';
 
@@ -53,8 +53,10 @@ class RestaurantListTile extends StatelessWidget {
                 ),
                 Gap.h16,
                 Text(
-                  'Paket ${restaurant.menus.foods.first.name}, ${restaurant.menus.drinks.first.name}, dan aneka makanan minuman lainnya!',
+                  restaurant.description,
                   style: AppThemes.subText1,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ],
             ),

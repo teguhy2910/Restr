@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:restr/src/constants/constants.dart';
-import 'package:restr/src/features/restaurant/domain/restaurants.dart';
 import 'package:restr/src/features/restaurant/presentation/detail_restaurant/detail_restaurant_page.dart';
 import 'package:restr/src/features/restaurant/presentation/list_restaurant/home_page.dart';
 import 'package:restr/src/features/restaurant/presentation/search_restaurant/search_restaurant_page.dart';
@@ -44,13 +43,13 @@ final goRouter = GoRouter(
           name: Routes.detailRestaurant.name,
           pageBuilder: (context, state) {
             final extras = (state.extra as Extras).extras;
-            final restaurant = extras[Keys.restaurant] as Restaurant;
+            final restaurantId = extras[Keys.restaurantId] as String;
 
             return _navigate(
               context,
               state,
               DetailRestaurantPage(
-                restaurant: restaurant,
+                restaurantId: restaurantId,
               ),
             );
           },
