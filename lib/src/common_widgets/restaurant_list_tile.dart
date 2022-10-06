@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:restr/src/constants/constants.dart';
 import 'package:restr/src/features/restaurant/domain/restaurant.dart';
 import 'package:restr/src/shared/extensions/extensions.dart';
-import 'package:restr/src/shared/helper/hero_builder.dart';
+import 'package:restr/src/shared/helper/helper.dart';
 
 class RestaurantListTile extends StatelessWidget {
   const RestaurantListTile({

@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:restr/src/constants/app_sizes.dart';
+import 'package:restr/src/constants/constants.dart';
 
 void showRegularBottomSheet(context, {required Widget child}) {
   if (Platform.isIOS) {

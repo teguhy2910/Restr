@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
+import 'package:restr/src/common_widgets/common_widgets.dart';
 import 'package:restr/src/constants/constants.dart';
 import 'package:restr/src/exceptions/network_exceptions.dart';
 import 'package:restr/src/features/restaurant/presentation/detail_restaurant/controllers/detail_restaurant_controller.dart';
@@ -9,9 +9,7 @@ import 'package:restr/src/features/restaurant/presentation/search_restaurant/wid
 import 'package:restr/src/features/restaurant/presentation/search_restaurant/widgets/regular_button.dart';
 import 'package:restr/src/features/review/presentation/add_review/controllers/add_review_controller.dart';
 import 'package:restr/src/shared/extensions/extensions.dart';
-import 'package:restr/src/shared/helper/snackbar_helper.dart';
-import 'package:restr/src/shared/widgets/input_text_field.dart';
-import 'package:restr/src/shared/widgets/text_field_area.dart';
+import 'package:restr/src/shared/helper/helper.dart';
 
 class AddReviewWidget extends ConsumerWidget {
   final String restaurantId;

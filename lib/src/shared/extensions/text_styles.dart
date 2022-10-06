@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:restr/src/constants/app_themes.dart';
+import 'package:restr/src/constants/constants.dart';
 
 extension XTextStyle on TextStyle {
   TextStyle get thin => copyWith(fontWeight: FontWeight.w100);

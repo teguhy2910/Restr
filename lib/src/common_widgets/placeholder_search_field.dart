@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:restr/src/constants/constants.dart';
 import 'package:restr/src/routing/app_routes.dart';
 import 'package:restr/src/shared/extensions/extensions.dart';
-import 'package:restr/src/shared/helper/hero_builder.dart';
+import 'package:restr/src/shared/helper/helper.dart';
 
 class PlaceholderSearchField extends StatelessWidget {
   const PlaceholderSearchField({

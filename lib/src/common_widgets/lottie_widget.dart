@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:restr/src/constants/constants.dart';
 import 'package:restr/src/shared/extensions/extensions.dart';
-
-import '../constants/constants.dart';
 
 class LottieWidget extends StatelessWidget {
   const LottieWidget({

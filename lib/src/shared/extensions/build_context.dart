@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:restr/src/constants/app_sizes.dart';
+import 'package:restr/src/constants/constants.dart';
 
 extension XBuildContext on BuildContext {
   MediaQueryData get mediaQuery => Sizes.mediaQueryData(this);

@@ -10,7 +10,7 @@ import 'package:restr/src/features/restaurant/presentation/detail_restaurant/wid
 import 'package:restr/src/features/restaurant/presentation/detail_restaurant/widgets/menu_list_tile.dart';
 import 'package:restr/src/features/restaurant/presentation/detail_restaurant/widgets/review_list_tile.dart';
 import 'package:restr/src/features/review/presentation/add_review/add_review_widget.dart';
-import 'package:restr/src/shared/helper/modal_bottom_sheet_helper.dart';
+import 'package:restr/src/shared/helper/helper.dart';
 
 class DetailRestaurantPage extends ConsumerStatefulWidget {
   final String restaurantId;

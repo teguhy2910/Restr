@@ -7,7 +7,6 @@ import 'package:restr/src/features/restaurant/domain/restaurant_list.dart';
 import 'package:restr/src/features/restaurant/presentation/list_restaurant/controllers/restaurant_list_controller.dart';
 import 'package:restr/src/routing/app_routes.dart';
 import 'package:restr/src/routing/extras.dart';
-import 'package:restr/src/shared/widgets/restaurant_list_tile.dart';
 
 class RestaurantListWidget extends ConsumerStatefulWidget {
   const RestaurantListWidget({
