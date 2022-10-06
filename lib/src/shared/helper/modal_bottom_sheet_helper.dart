@@ -14,13 +14,13 @@ void showRegularBottomSheet(context, {required Widget child}) {
       backgroundColor: Colors.transparent,
       builder: (context) => child,
     );
-    return;
+  } else {
+    showMaterialModalBottomSheet(
+      expand: false,
+      context: context,
+      enableDrag: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => child,
+    );
   }
-  showMaterialModalBottomSheet(
-    expand: false,
-    context: context,
-    enableDrag: true,
-    backgroundColor: Colors.transparent,
-    builder: (context) => child,
-  );
 }

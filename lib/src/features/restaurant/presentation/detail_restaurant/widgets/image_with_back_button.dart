@@ -36,7 +36,7 @@ class ImageWithBackButton extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 0,
+            top: Sizes.p20,
             left: Sizes.p20,
             child: SafeArea(
               child: GestureDetector(

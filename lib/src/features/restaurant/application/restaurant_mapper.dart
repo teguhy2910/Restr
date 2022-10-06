@@ -44,7 +44,7 @@ class RestaurantMapper {
             city: restaurant?.city,
             description: restaurant?.description,
             name: restaurant?.name,
-            pictureId: restaurant?.pictureId?.getSmallPicture,
+            pictureId: restaurant?.pictureId?.getLargePicture,
             rating: restaurant?.rating,
             address: restaurant?.address,
             categories: restaurant?.categories
