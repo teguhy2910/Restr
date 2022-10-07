@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:restr/src/features/restaurant/application/restaurant_mapper.dart';
 import 'package:restr/src/features/restaurant/data/repositories/restaurant_repository.dart';
+import 'package:restr/src/features/restaurant/domain/restaurant.dart';
 import 'package:restr/src/features/restaurant/domain/restaurant_detail.dart';
 import 'package:restr/src/features/restaurant/domain/restaurant_list.dart';
 import 'package:restr/src/features/restaurant/domain/restaurant_search.dart';
@@ -33,6 +34,28 @@ class RestaurantService {
         .read(restaurantRepositoryProvider)
         .getRestaurantSearch(query: query);
     return RestaurantMapper.mapToRestaurantSearch(restaurantSearch);
+  }
+
+  void saveFavoriteRestaurant({required Restaurant restaurant}) async {
+    ref
+        .read(restaurantRepositoryProvider)
+        .saveFavoriteRestaurant(restaurant: restaurant);
+  }
+
+  List<Restaurant> getAllFavoriteRestaurant() {
+    return ref.read(restaurantRepositoryProvider).getAllFavoriteRestaurant();
+  }
+
+  void deleteFavoriteRestaurant({required String restaurantId}) async {
+    ref
+        .read(restaurantRepositoryProvider)
+        .deleteFavoriteRestaurant(restaurantId: restaurantId);
+  }
+
+  bool isFavoriteRestaurantExist({required String restaurantId}) {
+    return ref
+        .read(restaurantRepositoryProvider)
+        .isFavoriteRestaurantExist(restaurantId: restaurantId);
   }
 }
 
