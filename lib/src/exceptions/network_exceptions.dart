@@ -169,12 +169,4 @@ abstract class NetworkExceptions with _$NetworkExceptions {
     });
     return errorMessage;
   }
-
-  static bool? getIsUnauthorizedRequest(NetworkExceptions error) {
-    return error.whenOrNull(
-      unauthorizedRequest: (reason, isUnauthorizedRequest) {
-        return isUnauthorizedRequest;
-      },
-    );
-  }
 }

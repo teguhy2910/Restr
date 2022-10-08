@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:restr/src/common_widgets/custom_back_button.dart';
 import 'package:restr/src/constants/constants.dart';
 import 'package:restr/src/features/restaurant/domain/restaurant_detail.dart';
 import 'package:restr/src/shared/helper/helper.dart';
@@ -35,25 +35,11 @@ class ImageWithBackButton extends StatelessWidget {
               ),
             ),
           ),
-          Positioned(
+          const Positioned(
             top: Sizes.p20,
             left: Sizes.p20,
             child: SafeArea(
-              child: GestureDetector(
-                onTap: () => context.pop(),
-                child: Container(
-                  padding: const EdgeInsets.all(Sizes.p8),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppThemes.white,
-                    boxShadow: AppThemes.getSmallShadow(),
-                  ),
-                  child: const Icon(
-                    Icons.arrow_back_ios_new_rounded,
-                    color: AppThemes.black,
-                  ),
-                ),
-              ),
+              child: CustomBackButton(),
             ),
           ),
         ],

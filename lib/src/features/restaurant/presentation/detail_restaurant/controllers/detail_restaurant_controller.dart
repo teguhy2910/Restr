@@ -14,7 +14,7 @@ class DetailRestaurantController
     final result = await restaurantService.getRestaurantDetail(id: id);
     result.when(
       success: (data) => state = AsyncData(data),
-      failure: (error, stacktrace) => AsyncError(error, stacktrace),
+      failure: (error, stacktrace) => state = AsyncError(error, stacktrace),
     );
   }
 }

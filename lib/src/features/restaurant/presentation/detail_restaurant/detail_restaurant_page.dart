@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:readmore/readmore.dart';
 import 'package:restr/src/common_widgets/common_widgets.dart';
+import 'package:restr/src/common_widgets/custom_back_button.dart';
 import 'package:restr/src/constants/constants.dart';
+import 'package:restr/src/exceptions/network_exceptions.dart';
 import 'package:restr/src/features/restaurant/domain/restaurant_detail.dart';
 import 'package:restr/src/features/restaurant/presentation/detail_restaurant/controllers/detail_restaurant_controller.dart';
 import 'package:restr/src/features/restaurant/presentation/detail_restaurant/widgets/basic_information_restaurant.dart';
@@ -42,6 +44,40 @@ class _DetailRestaurantPageState extends ConsumerState<DetailRestaurantPage> {
     return Scaffold(
       body: AsyncValueWidget<RestaurantDetail>(
         value: restaurantDetail,
+        loading: () {
+          return SafeArea(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                BackButton(),
+                Expanded(
+                  child: LottieWidget(assets: Resources.lottieLoading),
+                ),
+              ],
+            ),
+          );
+        },
+        error: (error, stacktrace) {
+          return SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(Sizes.p20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const CustomBackButton(),
+                  Expanded(
+                    child: LottieWidget(
+                      assets: Resources.lottieError,
+                      description: NetworkExceptions.getErrorMessage(
+                        error as NetworkExceptions,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
         data: (restaurant) {
           return SingleChildScrollView(
             child: Column(
