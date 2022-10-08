@@ -6,14 +6,31 @@ import 'package:restr/src/constants/constants.dart';
 import 'package:restr/src/features/restaurant/application/restaurant_mapper.dart';
 import 'package:restr/src/features/restaurant/domain/restaurant_detail.dart';
 import 'package:restr/src/features/restaurant/presentation/favorite_restaurant/controllers/favorites_controller.dart';
+import 'package:restr/src/features/restaurant/presentation/favorite_restaurant/controllers/is_favorite_controller.dart';
 
-class ImageWithBackButton extends StatelessWidget {
+class ImageWithBackButton extends ConsumerStatefulWidget {
   const ImageWithBackButton({
     Key? key,
     required this.restaurant,
   }) : super(key: key);
 
   final RestaurantDetail restaurant;
+
+  @override
+  ConsumerState<ImageWithBackButton> createState() =>
+      _ImageWithBackButtonState();
+}
+
+class _ImageWithBackButtonState extends ConsumerState<ImageWithBackButton> {
+  @override
+  void didChangeDependencies() {
+    Future.delayed(Duration.zero, () {
+      ref
+          .read(isFavoriteControllerProvider.notifier)
+          .isFavoriteRestaurantExist(restaurantId: widget.restaurant.id);
+    });
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +45,7 @@ class ImageWithBackButton extends StatelessWidget {
             child: AspectRatio(
               aspectRatio: 4 / 3,
               child: CachedNetworkImage(
-                imageUrl: restaurant.pictureId,
+                imageUrl: widget.restaurant.pictureId,
                 fit: BoxFit.cover,
               ),
             ),
@@ -45,17 +62,19 @@ class ImageWithBackButton extends StatelessWidget {
             right: Sizes.p20,
             child: SafeArea(
               child: Consumer(builder: (context, ref, child) {
-                bool isFavorite = ref
-                    .read(favoritesControllerProvider.notifier)
-                    .isFavoriteRestaurantExist(restaurantId: restaurant.id);
-                debugPrint('isFavorite: $isFavorite');
+                bool isFavorite = ref.watch(isFavoriteControllerProvider);
+                debugPrint('isFavorite here: $isFavorite');
                 return GestureDetector(
                   onTap: () {
                     ref
                         .read(favoritesControllerProvider.notifier)
                         .favoriteOnClick(
-                            restaurant:
-                                RestaurantMapper.mapToRestaurant(restaurant));
+                            restaurant: RestaurantMapper.mapToRestaurant(
+                                widget.restaurant));
+                    ref
+                        .read(isFavoriteControllerProvider.notifier)
+                        .isFavoriteRestaurantExist(
+                            restaurantId: widget.restaurant.id);
                     ref
                         .read(favoritesControllerProvider.notifier)
                         .getAllFavoriteRestaurant();
@@ -68,10 +87,7 @@ class ImageWithBackButton extends StatelessWidget {
                       boxShadow: AppThemes.getSmallShadow(),
                     ),
                     child: Icon(
-                      !ref
-                              .watch(favoritesControllerProvider.notifier)
-                              .isFavoriteRestaurantExist(
-                                  restaurantId: restaurant.id)
+                      !isFavorite
                           ? Icons.favorite_border_rounded
                           : Icons.favorite_rounded,
                       color: Colors.red,

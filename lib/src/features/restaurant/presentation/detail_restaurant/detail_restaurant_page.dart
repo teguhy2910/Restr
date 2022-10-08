@@ -46,14 +46,17 @@ class _DetailRestaurantPageState extends ConsumerState<DetailRestaurantPage> {
         value: restaurantDetail,
         loading: () {
           return SafeArea(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                BackButton(),
-                Expanded(
-                  child: LottieWidget(assets: Resources.lottieLoading),
-                ),
-              ],
+            child: Padding(
+              padding: const EdgeInsets.all(Sizes.p20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  CustomBackButton(),
+                  Expanded(
+                    child: LottieWidget(assets: Resources.lottieLoading),
+                  ),
+                ],
+              ),
             ),
           );
         },

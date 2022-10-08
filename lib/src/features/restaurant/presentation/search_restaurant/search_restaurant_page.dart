@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:restr/src/constants/constants.dart';
 import 'package:restr/src/features/restaurant/presentation/search_restaurant/controllers/result_search_text.dart';
+import 'package:restr/src/features/restaurant/presentation/search_restaurant/controllers/search_restaurant_controller.dart';
 import 'package:restr/src/features/restaurant/presentation/search_restaurant/widgets/search_field.dart';
 import 'package:restr/src/features/restaurant/presentation/search_restaurant/widgets/search_restaurant_list.dart';
 
@@ -30,8 +31,28 @@ class SearchRestaurantPage extends StatelessWidget {
                     ),
                   ),
                   Gap.w16,
-                  const Expanded(
-                    child: SearchField(),
+                  Expanded(
+                    child: Consumer(
+                      builder:
+                          (BuildContext context, WidgetRef ref, Widget? child) {
+                        return SearchField(
+                          hintText: 'What do you want to eat today?',
+                          autofocus: true,
+                          onChanged: (value) {
+                            if (value.isNotEmpty) {
+                              ref
+                                  .read(searchRestaurantControllerProvider
+                                      .notifier)
+                                  .searchRestaurant(query: value);
+                            }
+                            ref
+                                .read(
+                                    resultSearchTextControllerProvider.notifier)
+                                .search(name: value);
+                          },
+                        );
+                      },
+                    ),
                   ),
                 ],
               ),

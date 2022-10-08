@@ -83,7 +83,6 @@ class RestaurantRepository {
 
   bool isFavoriteRestaurantExist({required String restaurantId}) {
     final hiveRestaurant = Hive.box<String>(Keys.hiveRestaurantBox);
-    debugPrint('isFavorite: ${hiveRestaurant.containsKey(restaurantId)}');
     return hiveRestaurant.containsKey(restaurantId);
   }
 }

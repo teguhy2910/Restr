@@ -17,7 +17,9 @@ class RestaurantsPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Gap.h20,
-              const PlaceholderSearchField(),
+              const PlaceholderSearchField(
+                placeholderText: 'What do you want to eat today?',
+              ),
               Gap.h40,
               Text(
                 'Recommended for you',

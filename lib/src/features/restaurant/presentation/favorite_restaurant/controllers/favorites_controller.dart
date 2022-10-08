@@ -7,7 +7,7 @@ class FavoritesController extends StateNotifier<List<Restaurant>> {
 
   final RestaurantService restaurantService;
 
-  Future<void> getAllFavoriteRestaurant() async {
+  void getAllFavoriteRestaurant() {
     state = restaurantService.getAllFavoriteRestaurant();
   }
 
@@ -18,11 +18,6 @@ class FavoritesController extends StateNotifier<List<Restaurant>> {
     } else {
       restaurantService.saveFavoriteRestaurant(restaurant: restaurant);
     }
-  }
-
-  bool isFavoriteRestaurantExist({required String restaurantId}) {
-    return restaurantService.isFavoriteRestaurantExist(
-        restaurantId: restaurantId);
   }
 }
 
