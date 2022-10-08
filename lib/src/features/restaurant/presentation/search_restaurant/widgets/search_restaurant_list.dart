@@ -6,8 +6,7 @@ import 'package:restr/src/constants/constants.dart';
 import 'package:restr/src/features/restaurant/domain/restaurant_search.dart';
 import 'package:restr/src/features/restaurant/presentation/search_restaurant/controllers/result_search_text.dart';
 import 'package:restr/src/features/restaurant/presentation/search_restaurant/controllers/search_restaurant_controller.dart';
-import 'package:restr/src/routing/app_routes.dart';
-import 'package:restr/src/routing/extras.dart';
+import 'package:restr/src/routing/routing.dart';
 
 class SearchRestaurantList extends ConsumerWidget {
   const SearchRestaurantList({

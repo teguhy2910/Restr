@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:restr/src/constants/constants.dart';
-import 'package:restr/src/routing/app_routes.dart';
+import 'package:restr/src/routing/routing.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);

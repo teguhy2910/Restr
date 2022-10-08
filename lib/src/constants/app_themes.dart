@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppThemes {
-  static const Color scaffoldColor = Color(0xFFFFFFFF);
+  static const Color scaffoldColor = Color(0xFFFEFEFE);
   static const Color orange = Color(0xFFFAB400);
   static const Color green = Color(0xFF11AC6A);
   static const Color greenGrey = Color(0xFFD6FFEE);
@@ -69,6 +69,16 @@ class AppThemes {
       BoxShadow(
         color: AppThemes.grey.withOpacity(0.2),
         offset: const Offset(0, 2),
+        blurRadius: 4,
+      ),
+    ];
+  }
+
+  static List<BoxShadow> getNavBarShadow({Color color = grey}) {
+    return [
+      BoxShadow(
+        color: AppThemes.grey.withOpacity(0.2),
+        offset: const Offset(0, -2),
         blurRadius: 4,
       ),
     ];

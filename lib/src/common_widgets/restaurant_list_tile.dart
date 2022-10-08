@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:restr/src/constants/constants.dart';
 import 'package:restr/src/features/restaurant/domain/restaurant.dart';
 import 'package:restr/src/shared/extensions/extensions.dart';
-import 'package:restr/src/shared/helper/helper.dart';
 
 class RestaurantListTile extends StatelessWidget {
   const RestaurantListTile({
@@ -83,17 +82,13 @@ class ImageWithRating extends StatelessWidget {
         alignment: Alignment.bottomCenter,
         clipBehavior: Clip.none,
         children: [
-          Hero(
-            tag: 'image:${restaurant.id}',
-            flightShuttleBuilder: heroFlightShuttleBuilder,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(Sizes.p12),
-              child: AspectRatio(
-                aspectRatio: 4 / 3,
-                child: CachedNetworkImage(
-                  imageUrl: restaurant.pictureId,
-                  fit: BoxFit.cover,
-                ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(Sizes.p12),
+            child: AspectRatio(
+              aspectRatio: 4 / 3,
+              child: CachedNetworkImage(
+                imageUrl: restaurant.pictureId,
+                fit: BoxFit.cover,
               ),
             ),
           ),

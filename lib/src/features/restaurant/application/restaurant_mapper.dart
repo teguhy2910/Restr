@@ -96,4 +96,15 @@ class RestaurantMapper {
       },
     );
   }
+
+  static Restaurant mapToRestaurant(RestaurantDetail restaurantDetail) {
+    return Restaurant(
+      id: restaurantDetail.id,
+      city: restaurantDetail.city,
+      description: restaurantDetail.description,
+      name: restaurantDetail.name,
+      pictureId: restaurantDetail.pictureId,
+      rating: restaurantDetail.rating,
+    );
+  }
 }

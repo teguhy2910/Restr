@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:restr/src/constants/constants.dart';
+import 'package:restr/src/features/common/home/presentation/home_page.dart';
 import 'package:restr/src/features/restaurant/presentation/detail_restaurant/detail_restaurant_page.dart';
-import 'package:restr/src/features/restaurant/presentation/list_restaurant/home_page.dart';
 import 'package:restr/src/features/restaurant/presentation/search_restaurant/search_restaurant_page.dart';
-import 'package:restr/src/features/common/splash/splash_page.dart';
-import 'package:restr/src/routing/error_page.dart';
-import 'package:restr/src/routing/extras.dart';
+import 'package:restr/src/features/common/splash/presentation/splash_page.dart';
+import 'package:restr/src/routing/routing.dart';
 
 enum Routes {
   splash,
@@ -16,6 +15,7 @@ enum Routes {
 }
 
 final goRouter = GoRouter(
+  debugLogDiagnostics: true,
   urlPathStrategy: UrlPathStrategy.path,
   initialLocation: '/',
   errorPageBuilder: (context, state) => _navigate(
