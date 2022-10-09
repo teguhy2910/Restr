@@ -7,14 +7,32 @@ import 'package:restr/src/features/common/home/presentation/controller/home_cont
 import 'package:restr/src/features/common/settings/presentation/settings_page.dart';
 import 'package:restr/src/features/restaurant/presentation/favorite_restaurant/favorites_page.dart';
 import 'package:restr/src/features/restaurant/presentation/list_restaurant/restaurants_page.dart';
+import 'package:restr/src/shared/helper/notification_helper.dart';
 
-class HomePage extends ConsumerWidget {
+class HomePage extends ConsumerStatefulWidget {
   const HomePage({
     Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends ConsumerState<HomePage> {
+  @override
+  void initState() {
+    ref.read(notificationProvider).configureSelectNotificationSubject();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    selectNotificationSubject.close();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final controller = ref.watch(homeControllerProvider.notifier).getController;
     return PersistentTabView(
       context,

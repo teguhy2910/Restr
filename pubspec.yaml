@@ -45,6 +45,9 @@ dependencies:
   modal_bottom_sheet: ^2.1.2
   hive_flutter: ^1.1.0
   persistent_bottom_nav_bar: ^5.0.2
+  intl: ^0.17.0
+  flutter_local_notifications: ^12.0.1+1
+  android_alarm_manager_plus: ^2.0.7+1
 
 dev_dependencies:
   flutter_test:

@@ -5,8 +5,8 @@ import 'package:restr/src/common_widgets/common_widgets.dart';
 import 'package:restr/src/constants/constants.dart';
 import 'package:restr/src/features/restaurant/domain/restaurant.dart';
 import 'package:restr/src/features/restaurant/presentation/favorite_restaurant/controllers/favorites_controller.dart';
+import 'package:restr/src/features/restaurant/presentation/favorite_restaurant/controllers/result_favorite_text.dart';
 import 'package:restr/src/features/restaurant/presentation/favorite_restaurant/controllers/search_favorites_controller.dart';
-import 'package:restr/src/features/restaurant/presentation/search_restaurant/controllers/result_search_text.dart';
 import 'package:restr/src/routing/routing.dart';
 
 class FavoriteListWidget extends ConsumerStatefulWidget {
@@ -33,7 +33,7 @@ class _RestaurantListState extends ConsumerState<FavoriteListWidget> {
     final List<Restaurant> restaurants = ref.watch(favoritesControllerProvider);
     final List<Restaurant> searchRestaurants =
         ref.watch(searchFavoriteControllerProvider);
-    final String textResult = ref.watch(resultSearchTextControllerProvider);
+    final String textResult = ref.watch(resultFavoriteTextControllerProvider);
 
     if (searchRestaurants.isNotEmpty && textResult.isNotEmpty) {
       return ListView.builder(

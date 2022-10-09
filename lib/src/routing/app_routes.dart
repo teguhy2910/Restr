@@ -15,6 +15,7 @@ enum Routes {
 }
 
 final goRouter = GoRouter(
+  navigatorKey: navigatorKey,
   debugLogDiagnostics: true,
   urlPathStrategy: UrlPathStrategy.path,
   initialLocation: '/',

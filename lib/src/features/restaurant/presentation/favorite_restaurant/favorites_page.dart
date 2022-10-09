@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:restr/src/constants/constants.dart';
+import 'package:restr/src/features/restaurant/presentation/favorite_restaurant/controllers/result_favorite_text.dart';
 import 'package:restr/src/features/restaurant/presentation/favorite_restaurant/controllers/search_favorites_controller.dart';
 import 'package:restr/src/features/restaurant/presentation/favorite_restaurant/widgets/favorite_list_widget.dart';
-import 'package:restr/src/features/restaurant/presentation/search_restaurant/controllers/result_search_text.dart';
 import 'package:restr/src/features/restaurant/presentation/search_restaurant/widgets/search_field.dart';
 
 class FavoritesPage extends StatelessWidget {
@@ -31,7 +31,7 @@ class FavoritesPage extends StatelessWidget {
                             .searchFavoriteRestaurant(query: value);
                       }
                       ref
-                          .read(resultSearchTextControllerProvider.notifier)
+                          .read(resultFavoriteTextControllerProvider.notifier)
                           .search(name: value);
                     },
                   );
@@ -40,7 +40,8 @@ class FavoritesPage extends StatelessWidget {
               Gap.h40,
               Consumer(
                 builder: (context, ref, child) {
-                  final result = ref.watch(resultSearchTextControllerProvider);
+                  final result =
+                      ref.watch(resultFavoriteTextControllerProvider);
                   if (result.isNotEmpty) {
                     return Text(
                       'Results for "$result"',
