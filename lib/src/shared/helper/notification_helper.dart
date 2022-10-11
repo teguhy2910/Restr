@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:restr/src/constants/constants.dart';
@@ -35,9 +34,6 @@ class NotificationHelper {
     await flutterLocalNotificationsPlugin.initialize(initializationSettings,
         onDidReceiveNotificationResponse: (NotificationResponse details) async {
       final payload = details.payload;
-      if (payload != null) {
-        debugPrint('notification payload: $payload');
-      }
       selectNotificationSubject.add(payload ?? 'empty payload');
     });
   }

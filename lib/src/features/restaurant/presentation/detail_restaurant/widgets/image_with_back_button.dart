@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:restr/src/common_widgets/custom_back_button.dart';
+import 'package:restr/src/common_widgets/common_widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:restr/src/constants/constants.dart';
 import 'package:restr/src/features/restaurant/application/restaurant_mapper.dart';
@@ -63,7 +63,6 @@ class _ImageWithBackButtonState extends ConsumerState<ImageWithBackButton> {
             child: SafeArea(
               child: Consumer(builder: (context, ref, child) {
                 bool isFavorite = ref.watch(isFavoriteControllerProvider);
-                debugPrint('isFavorite here: $isFavorite');
                 return GestureDetector(
                   onTap: () {
                     ref
@@ -87,6 +86,7 @@ class _ImageWithBackButtonState extends ConsumerState<ImageWithBackButton> {
                       boxShadow: AppThemes.getSmallShadow(),
                     ),
                     child: Icon(
+                      key: const Key(Keys.iconFavorite),
                       !isFavorite
                           ? Icons.favorite_border_rounded
                           : Icons.favorite_rounded,

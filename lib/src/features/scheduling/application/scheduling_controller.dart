@@ -1,5 +1,4 @@
 import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:restr/src/features/scheduling/data/repositories/scheduling_repository.dart';
 import 'package:restr/src/services/background_service.dart';
@@ -15,7 +14,6 @@ class SchedulingController extends StateNotifier<bool> {
     state = value;
     ref.read(schedulingRepositoryProvider).saveSchedule(value: value);
     if (state) {
-      debugPrint('Scheduling Restaurants Activated');
       return await AndroidAlarmManager.periodic(
         const Duration(hours: 24),
         1,
@@ -25,7 +23,6 @@ class SchedulingController extends StateNotifier<bool> {
         wakeup: true,
       );
     } else {
-      debugPrint('Scheduling Restaurants Canceled');
       return await AndroidAlarmManager.cancel(1);
     }
   }

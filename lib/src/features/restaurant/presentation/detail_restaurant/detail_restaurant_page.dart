@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:readmore/readmore.dart';
 import 'package:restr/src/common_widgets/common_widgets.dart';
-import 'package:restr/src/common_widgets/custom_back_button.dart';
 import 'package:restr/src/constants/constants.dart';
 import 'package:restr/src/exceptions/network_exceptions.dart';
 import 'package:restr/src/features/restaurant/domain/restaurant_detail.dart';

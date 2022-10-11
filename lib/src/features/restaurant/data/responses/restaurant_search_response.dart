@@ -1,19 +1,16 @@
 class RestaurantSearchResponse {
   bool? error;
-  String? message;
   int? founded;
   List<RestaurantSearchItemResponse>? restaurants;
 
   RestaurantSearchResponse({
     this.error,
-    this.message,
     this.founded,
     this.restaurants,
   });
 
   RestaurantSearchResponse.fromJson(Map<String, dynamic> json) {
     error = json['error'];
-    message = json['message'];
     founded = json['founded'];
     if (json['restaurants'] != null) {
       restaurants = <RestaurantSearchItemResponse>[];
@@ -26,7 +23,6 @@ class RestaurantSearchResponse {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['error'] = error;
-    data['message'] = message;
     data['founded'] = founded;
     if (restaurants != null) {
       data['restaurants'] = restaurants!.map((v) => v.toJson()).toList();

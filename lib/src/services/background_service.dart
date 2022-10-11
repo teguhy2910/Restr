@@ -2,7 +2,6 @@ import 'dart:io';
 import 'dart:ui';
 import 'dart:isolate';
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 import 'package:restr/main.dart';
 import 'package:restr/src/features/restaurant/application/restaurant_mapper.dart';
 import 'package:restr/src/features/restaurant/data/repositories/restaurant_repository.dart';
@@ -32,7 +31,6 @@ class BackgroundService {
   }
 
   static Future<void> callback() async {
-    debugPrint('Alarm fired!');
     final notificationHelper = NotificationHelper();
     final dio = Dio();
     final httpClient = HttpClient();
@@ -47,7 +45,7 @@ class BackgroundService {
     final restaurant = restaurantList.maybeWhen(success: (data) {
       return data.restaurants.randomize();
     }, orElse: () {
-      return Restaurant();
+      return const Restaurant();
     });
     await notificationHelper.showNotification(
         flutterLocalNotificationsPlugin, restaurant);

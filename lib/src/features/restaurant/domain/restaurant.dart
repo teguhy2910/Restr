@@ -1,15 +1,16 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-class Restaurant {
-  String id;
-  String name;
-  String description;
-  String city;
-  String pictureId;
-  double rating;
+import 'package:equatable/equatable.dart';
 
-  Restaurant({
+class Restaurant extends Equatable {
+  final String id;
+  final String name;
+  final String description;
+  final String city;
+  final String pictureId;
+  final double rating;
+
+  const Restaurant({
     String? id,
     String? name,
     String? description,
@@ -49,4 +50,14 @@ class Restaurant {
 
   factory Restaurant.fromJson(String source) =>
       Restaurant.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  @override
+  List<Object?> get props => [
+        id,
+        name,
+        description,
+        city,
+        pictureId,
+        rating,
+      ];
 }
