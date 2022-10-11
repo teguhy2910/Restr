@@ -32,6 +32,8 @@ The challenge here is that I created a restaurant app with Riverpod Architecture
 
 I, use Rivderpod as my State Management, Dependency Injection, and Service Locator.. To see what Dependencies I created, you can see [here](#dependencies).
 
+For this submission 3, i add favorite feature, using Hive, and i implement notification with alarm manager.
+
 ## Installation
 
 Clone or Download and Open it into Android Studio, VSCode, or Other IDE / Text Editor
@@ -41,15 +43,25 @@ https://github.com/Adithya-13/Restr.git
 
 ## Demo
 
-|Dashboard|Detail Restaurant|Search Restaurant|
+|Dashboard|Detail Restaurant|Search Restaurant|Add Review|
+|--|--|--|--|
+|![](demo/dashboard.gif)|![](demo/detail.gif)|![](demo/search.gif)|![](demo/add-review.gif)|
+
+|Favorite|Unfavorite|Search Favorite|
 |--|--|--|
-|![](demo/dashboard.gif)|![](demo/detail.gif)|![](demo/search.gif)|
+|![](demo/favorite.gif)|![](demo/unfavorite.gif)|![](demo/search-favorite.gif)|
 
 ## Features
 - Splash
 - Dashboard
 - Search
 - Detail Restaurant
+- Add Review
+- Add Favorite
+- Remove Favorite
+- List Favorite
+- Search Favorite
+- Scheduling Restaurants
 
 ## Tech Stack
 - [Riverpod Architecture](https://codewithandrea.com/articles/flutter-app-architecture-riverpod-introduction/)
@@ -61,6 +73,17 @@ https://github.com/Adithya-13/Restr.git
 - [Flutter Riverpod](https://pub.dev/packages/flutter_riverpod)
 - [Lottie](https://pub.dev/packages/lottie)
 - [Readmore](https://pub.dev/packages/readmore)
+- [Freezed](https://pub/dev/packages/freezed)
+- [Dio](https://pub/dev/packages/dio)
+- [RxDart](https://pub/dev/packages/rxdart)
+- [Modal Bottom Sheet](https://pub/dev/packages/modal_bottom_sheet)
+- [Hive Flutter](https://pub/dev/packages/hive_flutter)
+- [Persisten Bottom Nav Bar](https://pub/dev/packages/persistent_bottom_nav_bar)
+- [Intl](https://pub/dev/packages/intl)
+- [Flutter local notifications](https://pub/dev/packages/flutter_local_notifications)
+- [Android Alarm Manager Plus](https://pub/dev/packages/android_alarm_manager_plus)
+- [Path Provider](https://pub/dev/packages/path_provider)
+- [Equatable](https://pub/dev/packages/equatable)
 
 
 
